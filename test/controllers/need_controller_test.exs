@@ -14,4 +14,12 @@ defmodule Playground.NeedControllerTest do
     assert response.resp_body == needs_as_json
   end
 
+  test "/create creates a new need" do
+    need_params = %{"need" => %{"description" => "A loving family", "urgency" => 3}}
+
+    response = conn(:post, "/api/needs", need_params) |> send_request
+
+    assert response.status == 201
+  end
+
 end

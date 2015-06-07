@@ -4,4 +4,8 @@ defmodule Playground.NeedView do
   def render("index.json", %{needs: needs}) do
     needs
   end
+
+  def render("create.json", %{need: need}) do
+    need
+  end
 end

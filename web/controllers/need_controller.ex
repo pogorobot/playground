@@ -8,4 +8,12 @@ defmodule Playground.NeedController do
     needs = Repo.all(Need)
     render conn, needs: needs
   end
+
+  def create(conn, %{"need" => %{"description" => description, "urgency" => urgency}}) do
+    need = %Playground.Need{description: description, urgency: urgency}
+    Repo.insert(need)
+
+    conn
+    |> send_resp(201, [])
+  end
 end
