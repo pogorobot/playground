@@ -18,8 +18,9 @@ defmodule Playground.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Playground do
-  #   pipe_through :api
-  # end
+  scope "/api", Playground do
+    pipe_through :api
+
+    resources "/needs", NeedController
+  end
 end
